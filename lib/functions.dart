@@ -11,11 +11,10 @@ class Functions {
           'https://newsapi.org/v2/top-headlines?country=in&apiKey=$key');
       var response = await http.get(url);
       data = json.decode(response.body);
+      return data;
     } catch (e) {
       print(e);
     }
-
-    return data;
   }
 
   static fetchSportsNews() async {
@@ -24,10 +23,10 @@ class Functions {
           Uri.parse('https://newsapi.org/v2/everything?q=sports&apiKey=$key');
       var response = await http.get(url);
       data = json.decode(response.body);
+      return data;
     } catch (e) {
       print(e);
     }
-    return data;
   }
 
   static fetchBusinessNews() async {
@@ -36,10 +35,10 @@ class Functions {
           Uri.parse('https://newsapi.org/v2/everything?q=business&apiKey=$key');
       var response = await http.get(url);
       data = json.decode(response.body);
+      return data;
     } catch (e) {
       print(e);
     }
-    return data;
   }
 
   static fetchGamingNews() async {
@@ -48,18 +47,21 @@ class Functions {
           Uri.parse('https://newsapi.org/v2/everything?q=gaming&apiKey=$key');
       var response = await http.get(url);
       data = json.decode(response.body);
+      return data;
     } catch (e) {
       print(e);
     }
-
-    return data;
   }
 
   static fetchScieneNews() async {
-    var url =
-        Uri.parse('https://newsapi.org/v2/everything?q=science&apiKey=$key');
-    var response = await http.get(url);
-    final Map<String, dynamic> data = json.decode(response.body);
-    return data;
+    try {
+      var url =
+          Uri.parse('https://newsapi.org/v2/everything?q=science&apiKey=$key');
+      var response = await http.get(url);
+      final Map<String, dynamic> data = json.decode(response.body);
+      return data;
+    } catch (e) {
+      print(e);
+    }
   }
 }
