@@ -1,4 +1,4 @@
-import 'package:daily_news/web_screen.dart';
+import 'package:daily_news/screens/web_screen.dart';
 
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -31,7 +31,10 @@ class NewsTiles extends StatelessWidget {
                   placeholder: (bctx, _) =>
                       Center(child: CircularProgressIndicator()),
                 ),
-                title: Text(newsData['articles'][i]['title']),
+                title: Padding(
+                  padding: const EdgeInsets.only(bottom: 3),
+                  child: Text(newsData['articles'][i]['title']),
+                ),
                 subtitle: newsData['articles'][i]['description'] == null
                     ? Text('')
                     : Text(

@@ -14,6 +14,7 @@ class WebScreen extends StatefulWidget {
 
 class _WebScreenState extends State<WebScreen> {
   late WebViewController controller;
+  var isLoading = false;
   @override
   void initState() {
     if (Platform.isAndroid) {
@@ -25,16 +26,21 @@ class _WebScreenState extends State<WebScreen> {
   @override
   Widget build(BuildContext context) {
     print(widget.url);
-    return SafeArea(
-      child: WebView(
-        initialUrl: widget.url,
-        javascriptMode: JavascriptMode.unrestricted,
-        onWebViewCreated: (web) {
-          controller = web;
-        },
-        onProgress: (int progress) {
-          print("WebView is loading (progress : $progress%)");
-        },
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'DailyNews',
+          style: Theme.of(context).textTheme.bodyText1,
+        ),
+      ),
+      body: SafeArea(
+        child: WebView(
+          initialUrl: widget.url,
+          javascriptMode: JavascriptMode.unrestricted,
+          onWebViewCreated: (web) {
+            controller = web;
+          },
+        ),
       ),
     );
   }
