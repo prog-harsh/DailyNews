@@ -6,32 +6,32 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class NewsTiles extends StatelessWidget {
   const NewsTiles(
-    this.newsData,
-    this.onRefresh,
-    this.controller,
+    this._newsData,
+    this._onRefresh,
+    this._controller,
   );
-  final controller;
-  final newsData;
-  final onRefresh;
+  final _controller;
+  final _newsData;
+  final _onRefresh;
 
   @override
   Widget build(BuildContext context) {
     return SmartRefresher(
-      controller: controller,
+      controller: _controller,
       enablePullDown: true,
       header: ClassicHeader(),
-      onRefresh: onRefresh,
+      onRefresh: _onRefresh,
       child: ListView.builder(
-        itemCount: newsData['articles'].length,
+        itemCount: _newsData['articles'].length,
         itemBuilder: (ctx, i) {
           return Column(
             children: [
               Container(
                 child: ListTile(
                   trailing: CachedNetworkImage(
-                    imageUrl: newsData['articles'][i]['urlToImage'] == null
+                    imageUrl: _newsData['articles'][i]['urlToImage'] == null
                         ? 'https://images.unsplash.com/photo-1529243856184-fd5465488984?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=769&q=80'
-                        : newsData['articles'][i]['urlToImage'],
+                        : _newsData['articles'][i]['urlToImage'],
                     fit: BoxFit.cover,
                     width: MediaQuery.of(context).size.width * 0.25,
                     placeholderFadeInDuration: Duration(seconds: 2),
@@ -44,19 +44,19 @@ class NewsTiles extends StatelessWidget {
                   ),
                   title: Padding(
                     padding: const EdgeInsets.only(bottom: 3),
-                    child: Text(newsData['articles'][i]['title']),
+                    child: Text(_newsData['articles'][i]['title']),
                   ),
-                  subtitle: newsData['articles'][i]['description'] == null
+                  subtitle: _newsData['articles'][i]['description'] == null
                       ? Text('')
                       : Text(
-                          newsData['articles'][i]['description'],
+                          _newsData['articles'][i]['description'],
                           overflow: TextOverflow.ellipsis,
                           maxLines: 2,
                         ),
                   onTap: () => Navigator.of(context).push(
                     MaterialPageRoute<void>(
                       builder: (BuildContext context) =>
-                          WebScreen(newsData['articles'][i]['url']),
+                          WebScreen(_newsData['articles'][i]['url']),
                     ),
                   ),
                 ),

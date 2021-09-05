@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class MainDrawer extends StatelessWidget {
-  const MainDrawer(this.fnc);
-  final fnc;
+  const MainDrawer(this._selectedNews);
+  final _selectedNews;
 
   buildListTile(title, context) {
     return ListTile(
@@ -10,7 +10,7 @@ class MainDrawer extends StatelessWidget {
         title,
         style: Theme.of(context).textTheme.subtitle1,
       ),
-      onTap: () => fnc(title),
+      onTap: () => _selectedNews(title),
     );
   }
 

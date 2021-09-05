@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
     _refreshController.refreshCompleted();
   }
 
-  selectedCategory(category) {
+  selectedNews(category) {
     if (category == "Sports") {
       _sports = true;
       _science = false;
@@ -73,7 +73,7 @@ class _HomePageState extends State<HomePage> {
         ),
         elevation: 0,
       ),
-      drawer: MainDrawer(selectedCategory),
+      drawer: MainDrawer(selectedNews),
       body: FutureBuilder(
           future: checkInternetConnectivity(),
           builder: (ctx, snap) {

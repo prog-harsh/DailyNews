@@ -3,15 +3,15 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class Functions {
-  static const key = '9e041027dee746bdabe00fea9f2f864c';
-  static late Map<String, dynamic> data;
+  static const _key = '9e041027dee746bdabe00fea9f2f864c';
+  static late Map<String, dynamic> _data;
   static fetchNewsTopHeadLines() async {
     try {
       var url = Uri.parse(
-          'https://newsapi.org/v2/top-headlines?country=in&apiKey=$key');
+          'https://newsapi.org/v2/top-headlines?country=in&apiKey=$_key');
       var response = await http.get(url);
-      data = json.decode(response.body);
-      return data;
+      _data = json.decode(response.body);
+      return _data;
     } catch (e) {
       print(e);
     }
@@ -20,10 +20,10 @@ class Functions {
   static fetchSportsNews() async {
     try {
       var url =
-          Uri.parse('https://newsapi.org/v2/everything?q=sports&apiKey=$key');
+          Uri.parse('https://newsapi.org/v2/everything?q=sports&apiKey=$_key');
       var response = await http.get(url);
-      data = json.decode(response.body);
-      return data;
+      _data = json.decode(response.body);
+      return _data;
     } catch (e) {
       print(e);
     }
@@ -31,11 +31,11 @@ class Functions {
 
   static fetchBusinessNews() async {
     try {
-      var url =
-          Uri.parse('https://newsapi.org/v2/everything?q=business&apiKey=$key');
+      var url = Uri.parse(
+          'https://newsapi.org/v2/everything?q=business&apiKey=$_key');
       var response = await http.get(url);
-      data = json.decode(response.body);
-      return data;
+      _data = json.decode(response.body);
+      return _data;
     } catch (e) {
       print(e);
     }
@@ -44,10 +44,10 @@ class Functions {
   static fetchGamingNews() async {
     try {
       var url =
-          Uri.parse('https://newsapi.org/v2/everything?q=gaming&apiKey=$key');
+          Uri.parse('https://newsapi.org/v2/everything?q=gaming&apiKey=$_key');
       var response = await http.get(url);
-      data = json.decode(response.body);
-      return data;
+      _data = json.decode(response.body);
+      return _data;
     } catch (e) {
       print(e);
     }
@@ -56,10 +56,10 @@ class Functions {
   static fetchScieneNews() async {
     try {
       var url =
-          Uri.parse('https://newsapi.org/v2/everything?q=science&apiKey=$key');
+          Uri.parse('https://newsapi.org/v2/everything?q=science&apiKey=$_key');
       var response = await http.get(url);
-      final Map<String, dynamic> data = json.decode(response.body);
-      return data;
+      final Map<String, dynamic> _data = json.decode(response.body);
+      return _data;
     } catch (e) {
       print(e);
     }
