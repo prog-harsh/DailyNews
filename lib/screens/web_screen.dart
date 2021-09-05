@@ -13,7 +13,7 @@ class WebScreen extends StatefulWidget {
 }
 
 class _WebScreenState extends State<WebScreen> {
-  late WebViewController controller;
+  late WebViewController _controller;
   var isLoading = false;
   @override
   void initState() {
@@ -21,6 +21,18 @@ class _WebScreenState extends State<WebScreen> {
       WebView.platform = SurfaceAndroidWebView();
     }
     super.initState();
+  }
+
+  _goBack() async {
+    if (await _controller.canGoBack()) {
+      await _controller.goBack();
+    }
+  }
+
+  _goForward() async {
+    if (await _controller.canGoForward()) {
+      await _controller.goForward();
+    }
   }
 
   @override
@@ -32,13 +44,27 @@ class _WebScreenState extends State<WebScreen> {
           'DailyNews',
           style: Theme.of(context).textTheme.bodyText1,
         ),
+        actions: [
+          IconButton(
+            onPressed: _goBack,
+            icon: Icon(
+              Icons.arrow_back_ios_rounded,
+            ),
+          ),
+          IconButton(
+            onPressed: _goForward,
+            icon: Icon(
+              Icons.arrow_forward_ios_rounded,
+            ),
+          ),
+        ],
       ),
       body: SafeArea(
         child: WebView(
           initialUrl: widget._url,
           javascriptMode: JavascriptMode.unrestricted,
           onWebViewCreated: (web) {
-            controller = web;
+            _controller = web;
           },
         ),
       ),
