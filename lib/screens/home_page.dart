@@ -1,8 +1,9 @@
 import 'package:daily_news/functions.dart';
 import 'package:daily_news/widgets/main_drawer.dart';
 import 'package:daily_news/widgets/news_tiles.dart';
-import 'package:flutter/foundation.dart';
 
+import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:connectivity/connectivity.dart';
 
@@ -15,11 +16,20 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   var _sports = false, _business = false, _science = false, _gaming = false;
-  final connectivity = Connectivity();
+  final _connectivity = Connectivity();
+
+  RefreshController _refreshController =
+      RefreshController(initialRefresh: false);
 
   checkInternetConnectivity() async {
-    final result = await connectivity.checkConnectivity();
+    final result = await _connectivity.checkConnectivity();
     return result.index;
+  }
+
+  onRefresh() async {
+    await Future.delayed(Duration(seconds: 2));
+    setState(() {});
+    _refreshController.refreshCompleted();
   }
 
   selectedCategory(category) {
@@ -112,7 +122,7 @@ class _HomePageState extends State<HomePage> {
                 }
                 final Map<String, dynamic> data =
                     s.data as Map<String, dynamic>;
-                return NewsTiles(data);
+                return NewsTiles(data, onRefresh, _refreshController);
               },
             );
           }),
