@@ -53,6 +53,30 @@ class Functions {
     }
   }
 
+  static fetchPoliticalNews() async {
+    try {
+      var url = Uri.parse(
+          'https://newsapi.org/v2/everything?q=political%20india&apiKey=$_key');
+      var response = await http.get(url);
+      _data = json.decode(response.body);
+      return _data;
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  static fetchProgrammingNews() async {
+    try {
+      var url = Uri.parse(
+          'https://newsapi.org/v2/everything?q=coding%20programming&apiKey=$_key');
+      var response = await http.get(url);
+      final Map<String, dynamic> _data = json.decode(response.body);
+      return _data;
+    } catch (e) {
+      print(e);
+    }
+  }
+
   static fetchScieneNews() async {
     try {
       var url =

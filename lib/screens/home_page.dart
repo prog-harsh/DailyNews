@@ -15,7 +15,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var _sports = false, _business = false, _science = false, _gaming = false;
+  var _sports = false,
+      _business = false,
+      _science = false,
+      _gaming = false,
+      _political = false,
+      _coding = false;
   final _connectivity = Connectivity();
 
   RefreshController _refreshController =
@@ -38,26 +43,48 @@ class _HomePageState extends State<HomePage> {
       _science = false;
       _business = false;
       _gaming = false;
+      _political = false;
+      _coding = false;
     } else if (category == "Top Headlines") {
       _sports = false;
       _business = false;
       _science = false;
       _gaming = false;
+      _political = false;
+      _coding = false;
     } else if (category == "Business") {
       _business = true;
       _science = false;
       _sports = false;
       _gaming = false;
+      _political = false;
+      _coding = false;
     } else if (category == "Science") {
       _science = true;
       _business = false;
       _sports = false;
       _gaming = false;
     } else if (category == "Gaming") {
-      _science = true;
+      _science = false;
       _business = false;
       _sports = false;
       _gaming = true;
+      _political = false;
+      _coding = false;
+    } else if (category == 'Political (India)') {
+      _political = true;
+      _science = false;
+      _business = false;
+      _sports = false;
+      _gaming = false;
+      _coding = false;
+    } else if (category == 'Coding & Programming') {
+      _political = false;
+      _science = false;
+      _business = false;
+      _sports = false;
+      _gaming = false;
+      _coding = true;
     }
     setState(() {});
     Navigator.of(context).pop();
@@ -106,15 +133,19 @@ class _HomePageState extends State<HomePage> {
               );
             }
             return FutureBuilder(
-              future: _gaming
-                  ? Functions.fetchGamingNews()
-                  : _science
-                      ? Functions.fetchScieneNews()
-                      : _business
-                          ? Functions.fetchBusinessNews()
-                          : _sports
-                              ? Functions.fetchSportsNews()
-                              : Functions.fetchNewsTopHeadLines(),
+              future: _coding
+                  ? Functions.fetchProgrammingNews()
+                  : _political
+                      ? Functions.fetchPoliticalNews()
+                      : _gaming
+                          ? Functions.fetchGamingNews()
+                          : _science
+                              ? Functions.fetchScieneNews()
+                              : _business
+                                  ? Functions.fetchBusinessNews()
+                                  : _sports
+                                      ? Functions.fetchSportsNews()
+                                      : Functions.fetchNewsTopHeadLines(),
               builder: (ctx, s) {
                 if (s.connectionState == ConnectionState.waiting ||
                     !s.hasData) {

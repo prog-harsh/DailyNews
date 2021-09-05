@@ -38,6 +38,8 @@ class MainDrawer extends StatelessWidget {
               buildListTile('Business', context),
               buildListTile('Science', context),
               buildListTile('Gaming', context),
+              buildListTile('Political (India)', context),
+              buildListTile('Coding & Programming', context),
             ],
           ),
         ),
