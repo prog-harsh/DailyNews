@@ -22,6 +22,7 @@ class NewsTiles extends StatelessWidget {
       header: ClassicHeader(),
       onRefresh: _onRefresh,
       child: ListView.builder(
+        physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         itemCount: _newsData['articles'].length,
         itemBuilder: (ctx, i) {
           return Column(
