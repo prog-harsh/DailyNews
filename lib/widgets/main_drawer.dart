@@ -28,8 +28,9 @@ class MainDrawer extends StatelessWidget {
                   'Daily News',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 23,
-                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                    fontFamily: 'Neuton',
+                    //fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
