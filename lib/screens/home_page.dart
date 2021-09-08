@@ -64,6 +64,8 @@ class _HomePageState extends State<HomePage> {
       _business = false;
       _sports = false;
       _gaming = false;
+      _political = false;
+      _coding = false;
     } else if (category == "Gaming") {
       _science = false;
       _business = false;
