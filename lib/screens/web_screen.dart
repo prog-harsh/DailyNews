@@ -37,7 +37,6 @@ class _WebScreenState extends State<WebScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget._url);
     return Scaffold(
       appBar: AppBar(
         title: Text(
