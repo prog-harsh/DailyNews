@@ -1,3 +1,4 @@
+import 'package:daily_news/helpers/custom_page_transition_builder.dart';
 import 'package:flutter/material.dart';
 
 import 'screens/home_page.dart';
@@ -15,10 +16,16 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         appBarTheme: AppBarTheme(
           centerTitle: true,
+          backgroundColor: Color(0xff171717),
         ),
         fontFamily: 'OpenSans',
         primaryColor: Color(0xff171717),
         canvasColor: Color(0xff171717),
+        pageTransitionsTheme: PageTransitionsTheme(
+          builders: {
+            TargetPlatform.android: CustomPageTransitionBuilder(),
+          },
+        ),
         textTheme: TextTheme(
           bodyText1: TextStyle(
             color: Colors.white,

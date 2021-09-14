@@ -1,4 +1,4 @@
-import 'package:daily_news/functions.dart';
+import 'package:daily_news/backend/functions.dart';
 import 'package:daily_news/widgets/main_drawer.dart';
 import 'package:daily_news/widgets/news_tiles.dart';
 
